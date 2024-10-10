@@ -35,17 +35,18 @@ In the first optimization attempt, the model was adjusted to use:
 100 nodes in the first hidden layer, 50 in the second, and 25 in the third.
 
 ##### Results:
-Training Accuracy: 74.66%
-Test Accuracy: 72.46%
+Training Accuracy: 74.70%
+Test Accuracy: 72.47%
 This shows an improvement in test accuracy compared to the initial model, but it still falls short of the 75% goal.
 
 #### Attempt 2: Tuning Activation Functions
-For the second optimization attempt, the activation function was changed from ReLU to Tanh for the hidden layers.
+For the second optimization attempt, the activation function was changed from ReLU to Tanh for the hidden layers and the model was adjusted to use:
+80 nodes in the first hidden layer, 40 in the second, and 20 in the third.
 
 ##### Results:
 
 Training Accuracy: 74.04%
-Test Accuracy: 73.34%
+Test Accuracy: 73.43%
 Using Tanh provided a small improvement in test accuracy but still fell short of the 75% goal.
 
 #### Attempt 3: Experimenting with ELU Activation
@@ -71,13 +72,13 @@ Next, the ASK_AMT column was binned into different categories to simplify the ra
 
 <1K, 1K-5K, 5K-10K, 10K-50K, 50K-100K, 100K-500K, 500K-1M, 1M-5M, >5M
 Binning + ReLU Model Results:
-Training Accuracy: 74.47%
-Test Accuracy: 72.60%
+Training Accuracy: 73.89%
+Test Accuracy: 73.51%
 Binning with the ReLU model resulted in a slight improvement in test accuracy.
 
 ##### Binning + Tanh Model Results:
 Training Accuracy: 74.47%
-Test Accuracy: 72.06%
+Test Accuracy: 72.61%
 Binning with the Tanh model showed no significant improvement and was similar to previous attempts.
 
 #### 5. Outlier Removal
