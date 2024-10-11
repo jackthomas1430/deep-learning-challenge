@@ -46,6 +46,8 @@ The initial model was developed using TensorFlow's Keras Sequential API. The arc
 In the first optimization attempt, the model was adjusted to use:
 100 nodes in the first hidden layer, 50 in the second, and 25 in the third.
 ![Optimizatin_1]()
+<img width="1519" alt="Optimization_1 1" src="https://github.com/user-attachments/assets/25ddac6a-e24d-4f49-918d-d8c6d70d41ae">
+
 
 ##### Results:
 - Training Accuracy: 74.70%
