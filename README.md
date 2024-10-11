@@ -114,3 +114,9 @@ Even though the training accuracy improved after removing outliers, the test acc
 
 ## Conclusion
 Ultimately, the fourth optimization attempt, where the number of epochs was reduced to 20, the first hidden layer had 80 nodes, the second layer had 30 nodes, and the third layer had 10 nodes, achieved the highest test accuracy at 73.99%. While adjustments in hidden layers, activation functions, binning, and outlier removal yielded improvements, the model still did not achieve an accuracy above 75%. Further techniques or the use of different types of neural networks, could be explored to improve the model's performance.
+
+## Acknowledgements
+    
+    Xpert Learning Assistant was used to answer detailed questions, and assist in debugging.The starter code provided was the base of the report and was modified using course curriculum and activities to fit the requirements of the assignment. The TA and instructor for the course also assisted in adjusting the code during office hours.For more information about the Xpert Learning Assistant, visit [EdX Xpert Learning Assistant](https://www.edx.org/). 
+
+## References
