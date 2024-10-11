@@ -1,4 +1,4 @@
-# Alphabet Soup Charity Neural Network Analysis
+# Alphabet Soup Charity Analysis
 ## Project Overview
 The purpose of this project is to create a binary classification model that predicts whether an organization funded by the Alphabet Soup charity will be successful. The original dataset consists of 34,299 organizations with metadata about each organization, such as:
 - EIN and NAME: Identification columns
@@ -43,8 +43,7 @@ The initial model was developed using TensorFlow's Keras Sequential API. The arc
 #### Attempt 1: 
 In the first optimization attempt, the model was adjusted to use:
 100 nodes in the first hidden layer, 50 in the second, and 25 in the third.
-![Optimizatin_1](<img width="1519" alt="Optimization_1 1" src="https://github.com/user-attachments/assets/dbad4fd8-a5af-40bf-b799-0049219a8ba4">
-)
+![Optimizatin_1]()
 
 ##### Results:
 -Training Accuracy: 74.70%
@@ -120,3 +119,8 @@ Ultimately, the fourth optimization attempt, where the number of epochs was redu
     Xpert Learning Assistant was used to answer detailed questions, and assist in debugging.The starter code provided was the base of the report and was modified using course curriculum and activities to fit the requirements of the assignment. The TA and instructor for the course also assisted in adjusting the code during office hours.For more information about the Xpert Learning Assistant, visit [EdX Xpert Learning Assistant](https://www.edx.org/). 
 
 ## References
+## References
+
+- [Activation Functions in Neural Networks](https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html)
+- [Automated Hyperparameter Tuning with Keras Tuner and TensorFlow 2.0](https://medium.com/analytics-vidhya/automated-hyperparameter-tuning-with-keras-tuner-and-tensorflow-2-0-31ec83f08a62#:~:text=A%20Hyperband%20tuner%20is%20an%20optimized%20version%20of,achieving%20the%20highest%20accuracy%20on%20the%20validation%20set.)
+
