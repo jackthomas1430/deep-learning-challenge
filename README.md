@@ -1,19 +1,17 @@
 # Alphabet Soup Charity Neural Network Analysis
 ## Project Overview
 The purpose of this project is to create a binary classification model that predicts whether an organization funded by the Alphabet Soup charity will be successful. The original dataset consists of 34,299 organizations with metadata about each organization, such as:
-  
-  -EIN and NAME—Identification columns
-  -APPLICATION_TYPE—Alphabet Soup application type
-  -AFFILIATION—Affiliated sector of industry
-  -CLASSIFICATION—Government organization classification
-  -USE_CASE—Use case for funding
-  -ORGANIZATION—Organization type
-  -STATUS—Active status
-  -INCOME_AMT—Income classification
-  -SPECIAL_CONSIDERATIONS—Special considerations for application
-  -ASK_AMT—Funding amount requested
-  -IS_SUCCESSFUL—Was the money used effectively
-
+- EIN and NAME: Identification columns
+- APPLICATION_TYPE: Alphabet Soup application type
+- AFFILIATION: Affiliated sector of industry
+- CLASSIFICATION: Government organization classification
+- USE_CASE: Use case for funding
+- ORGANIZATION: Organization type
+- STATUS: Active status
+- INCOME_AMT: Income classification
+- SPECIAL_CONSIDERATIONS: Special considerations for application
+- ASK_AMT: Funding amount requested
+- IS_SUCCESSFUL: Was the money used effectively
 The analysis includes preprocessing the data, building and optimizing a neural network, and testing different techniques improve the model's accuracy.
 
 ## Instructions
@@ -28,15 +26,6 @@ The following preprocessing steps were applied to the dataset:
 5. Split the preprocessed data into features array, and a target array
 6. Use train_test_split to split the data into training and testing datasets
 7. Use a StandardScalerScale instance and scale, train, and transform the datasets  
-
-Binning: The ASK_AMT column, which represents the amount of funding requested by the organization, was binned into discrete categories. The bins were created to categorize the requests from less than $1K to more than $5M. These bins helped categorize and simplify the range of funding requests.
-
-Bin Ranges:
-
-<1K, 1K-5K, 5K-10K, 10K-50K, 50K-100K, 100K-500K, 500K-1M, 1M-5M, >5M
-This approach was intended to help the model understand the relationship between the amount requested and the likelihood of success.
-
-Outlier Removal: Outliers were identified using the interquartile range (IQR) method. The ASK_AMT and STATUS columns exhibited outliers, which were subsequently removed to prevent their influence on the model.
 
 ### 2. Compile, Train and Evaluate the Model 
 The initial model was developed using TensorFlow's Keras Sequential API. The architecture consisted of the following layers:
@@ -89,7 +78,8 @@ The ELU activation function showed similar results to Tanh, but did not achieve 
 
 #### Attempt 4: Reducing Complexity of Hidden Layers
 In the fourth optimization attempt, the number of epochs was reduced to 20, the first hidden has 80 nodes, second layer has 30 nodes, and the third layer has 10 nodes. Relu was used for the activation. 
-![Optimization_4]()
+![Optimization_4](![Optimization_4 1](https://github.com/user-attachments/assets/d0c168b9-6c90-41f4-92eb-c6a83e7bed89)
+)
 
 ##### Results:
 
@@ -97,10 +87,9 @@ In the fourth optimization attempt, the number of epochs was reduced to 20, the 
 -Test Accuracy: 73.99%
 This simplification brought test accuracy slightly higher but still did not meet the 75% goal.
 
-#### 4. Binning Attempts
-Next, the ASK_AMT column was binned into different categories to simplify the range of funding requests and provide the model with more interpretable categories. The following binning strategy was used:
-
-<1K, 1K-5K, 5K-10K, 10K-50K, 50K-100K, 100K-500K, 500K-1M, 1M-5M, >5M
+#### Binning Attempts
+Next, the ASK_AMT column was binned into different categories to simplify the range of funding requests. The following binning strategy was used: <1K, 1K-5K, 5K-10K, 10K-50K, 50K-100K, 100K-500K, 500K-1M, 1M-5M, >5M
+![Binning](Binning_Relu_1)
 
 ##### Binning + ReLU Model Results:
 -Training Accuracy: 73.89%
@@ -110,15 +99,18 @@ Binning with the ReLU model resulted in a slight improvement in test accuracy.
 ##### Binning + Tanh Model Results:
 -Training Accuracy: 74.47%
 -Test Accuracy: 72.61%
-Binning with the Tanh model showed no significant improvement and was similar to previous attempts.
-
-#### 5. Outlier Removal
-Outliers were detected and removed from the dataset based on the ASK_AMT column. After removing the outliers, the model was retrained.
+Binning with the Tanh model showed a did not show a greater improvement to the relu attempt. 
+#### Outlier Removal
+Lastly, an outlier plot was created to identify and remove outliers from the dataset based on the ASK_AMT column. 
+![Outliers](<img width="1519" alt="Outlier1" src="https://github.com/user-attachments/assets/9815c51c-503c-4047-8dde-568c851c8f5d">
+)
+![Outliers_2](<img width="1532" alt="Outlier2" src="https://github.com/user-attachments/assets/b30f89a2-f0b3-4157-b7ec-bc56d6d90b9b">
+)
 
 ##### Results:
 -Training Accuracy: 76.13%
 -Test Accuracy: 71.16%
-Even though the training accuracy improved after removing outliers, the test accuracy dropped slightly, indicating that removing outliers did not enhance the generalization of the model.
+Even though the training accuracy improved after removing outliers, the test accuracy dropped, suggesting that removing outliers did not improve the accuracy of the model.
 
 ## Conclusion
-Through multiple optimization attempts, the highest test accuracy achieved was 73.99%, which is still below the target of 75%. While adjustments in hidden layers, activation functions, binning, and outlier removal yielded improvements, the model still faces overfitting challenges. Further techniques, such as regularization, dropout, or alternative architectures (e.g., different types of neural networks), could be explored to improve the model's performance.
+Ultimately, the fourth optimization attempt, where the number of epochs was reduced to 20, the first hidden layer had 80 nodes, the second layer had 30 nodes, and the third layer had 10 nodes, achieved the highest test accuracy at 73.99%. While adjustments in hidden layers, activation functions, binning, and outlier removal yielded improvements, the model still did not achieve an accuracy above 75%. Further techniques or the use of different types of neural networks, could be explored to improve the model's performance.
