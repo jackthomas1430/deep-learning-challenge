@@ -1,5 +1,6 @@
 # Alphabet Soup Charity Analysis
 ## Project Overview
+
 The purpose of this project is to create a binary classification model that predicts whether an organization funded by the Alphabet Soup charity will be successful. The original dataset consists of 34,299 organizations with metadata about each organization, such as:
 - EIN and NAME: Identification columns
 - APPLICATION_TYPE: Alphabet Soup application type
@@ -17,6 +18,7 @@ The analysis includes preprocessing the data, building and optimizing a neural n
 
 ## Instructions
 ### Step 1. Data Preprocessing
+
 The following preprocessing steps were applied to the dataset:
 1. Read in the charity_data.csv and identify the target variable(s) and feature variables for the model
   - The target variable is IS_SUCCESSFUL, which indicates whether the organization was successful (1) or not (0).
@@ -29,6 +31,7 @@ The following preprocessing steps were applied to the dataset:
 7. Use a StandardScalerScale instance and scale, train, and transform the datasets  
 
 ### 2. Compile, Train and Evaluate the Model 
+
 The initial model was developed using TensorFlow's Keras Sequential API. The architecture consisted of the following layers:
   - Input Layer: Based on the number of input features from the preprocessed data.
   - Hidden Layers: Two hidden layers with 80 and 30 nodes, respectively, using the relu activation function.
@@ -43,6 +46,7 @@ The initial model was developed using TensorFlow's Keras Sequential API. The arc
 ### 3. Optimization Attempts
 
 #### Attempt 1: 
+
 In the first optimization attempt, the model was adjusted to use:
 100 nodes in the first hidden layer, 50 in the second, and 25 in the third.
 
@@ -55,6 +59,7 @@ In the first optimization attempt, the model was adjusted to use:
 This shows did not show improvement in test accuracy compared to the initial model. 
 
 #### Attempt 2: 
+
 For the second optimization attempt, the activation function was changed from Relu to Tanh for the hidden layers and the model was adjusted to use: 80 nodes in the first hidden layer, 40 in the second, and 20 in the third.
 
 <img width="1494" alt="Optimization_2 1" src="https://github.com/user-attachments/assets/8bd595c3-e233-4533-9510-3a37390b3908">
@@ -66,6 +71,7 @@ For the second optimization attempt, the activation function was changed from Re
 Using Tanh provided a slight improvement in test accuracy but still fell short of the 75% goal.
 
 #### Attempt 3:
+
 For the third optimization attempt,the ELU activation function was tested in all hidden layers.
 
 <img width="1493" alt="Optimization_3 1" src="https://github.com/user-attachments/assets/859a7a3e-da8e-4ead-9b78-f6d555070fa8">
@@ -79,6 +85,7 @@ For the third optimization attempt,the ELU activation function was tested in all
 The ELU activation function showed similar results to Tanh, but did not achieve accuracy above 75%.
 
 #### Attempt 4: 
+
 In the fourth optimization attempt, the number of epochs was reduced to 20, the first hidden has 80 nodes, second layer has 30 nodes, and the third layer has 10 nodes. Relu was used for the activation. 
 
 ![Optimization_4 1](https://github.com/user-attachments/assets/3201511e-b2a0-4a3c-aebe-32afe1f0827e)
@@ -90,6 +97,7 @@ In the fourth optimization attempt, the number of epochs was reduced to 20, the 
 This brought test accuracy slightly higher but still did not meet the 75% goal.
 
 #### Binning Attempts
+
 Next, the ASK_AMT column was binned into different categories to simplify the range of funding requests. The following binning strategy was used: <1K, 1K-5K, 5K-10K, 10K-50K, 50K-100K, 100K-500K, 500K-1M, 1M-5M, >5M
 
 <img width="1481" alt="Binning_Relu_1" src="https://github.com/user-attachments/assets/8ad20f9a-152e-4ef4-bec2-1bf0a6311334">
@@ -121,6 +129,7 @@ Lastly, an outlier plot was created to identify and remove outliers from the dat
 Even though the training accuracy improved after removing outliers, the test accuracy dropped, suggesting that removing outliers did not improve the accuracy of the model.
 
 ## Conclusion
+
 Ultimately, the fourth optimization attempt, where the number of epochs was reduced to 20, the first hidden layer had 80 nodes, the second layer had 30 nodes, and the third layer had 10 nodes, achieved the highest test accuracy at 73.99%. While adjustments in hidden layers, activation functions, binning, and outlier removal yielded improvements, the model still did not achieve an accuracy above 75%. Further techniques or the use of different types of neural networks, could be explored to improve the model's performance.
 
 ## Acknowledgements
