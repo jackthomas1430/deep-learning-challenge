@@ -25,6 +25,8 @@ The following preprocessing steps were applied to the dataset:
   - Categorical features were converted into numerical values using one-hot encoding, including columns like APPLICATION_TYPE, AFFILIATION, and INCOME_AMT.
 2. Drop uncessary columns: EIN and NAME
 3. Identify the number of unique variables for each colum and for columns with more than 10 unique values (APPLICATION_TYPE and CLASSIFICATION) combine "rare" categorical varibales together into a new value, Other.
+    - For APPLICATION_TYPE, a cutoff value of 100 was used 
+    - For CLASSIFICAtion, a cutoff value of 200 sas used
 4. Encode categorical varibles using pd.get_dummies()
 5. Split the preprocessed data into features array, and a target array
 6. Use train_test_split to split the data into training and testing datasets
@@ -32,14 +34,14 @@ The following preprocessing steps were applied to the dataset:
 
 ### 2. Compile, Train and Evaluate the Model 
 
-The initial model was developed using TensorFlow's Keras Sequential API. The architecture consisted of the following layers:
+The initial model was developed using TensorFlow's Keras Sequential API and consisted of the following layers:
   - Input Layer: Based on the number of input features from the preprocessed data.
   - Hidden Layers: Two hidden layers with 80 and 30 nodes, respectively, using the relu activation function.
   - Output Layer: A single neuron with a sigmoid activation function to predict the binary outcome (IS_SUCCESSFUL).
   
   ### Training Results:
-  - Training Accuracy: 74.32%
-  - Test Accuracy: 73.13%
+  - Training Accuracy: 74.17%
+  - Test Accuracy: 72.50%
   
   The initial model produced a test accuracy of around 73%, which was below the target of 75%. So, further optimizations were attempted.
 
@@ -53,10 +55,10 @@ In the first optimization attempt, the model was adjusted to use:
 <img width="1519" alt="Optimization_1 1" src="https://github.com/user-attachments/assets/25ddac6a-e24d-4f49-918d-d8c6d70d41ae">
 
 ##### Results:
-- Training Accuracy: 74.70%
-- Test Accuracy: 72.47%
+- Training Accuracy: 74.18%
+- Test Accuracy: 73.53%
 
-This shows did not show improvement in test accuracy compared to the initial model. 
+This shows a small improvement in test accuracy compared to the initial model. 
 
 #### Attempt 2: 
 
@@ -65,10 +67,10 @@ For the second optimization attempt, the activation function was changed from Re
 <img width="1494" alt="Optimization_2 1" src="https://github.com/user-attachments/assets/8bd595c3-e233-4533-9510-3a37390b3908">
 
 ##### Results:
-- Training Accuracy: 74.04%
-- Test Accuracy: 73.43%
+- Training Accuracy: 74.78%
+- Test Accuracy: 71.53%
 
-Using Tanh provided a slight improvement in test accuracy but still fell short of the 75% goal.
+Using Tanh provided a slight improvement in training accuracy but a decreased test accuracy. 
 
 #### Attempt 3:
 
@@ -79,22 +81,22 @@ For the third optimization attempt,the ELU activation function was tested in all
 
 ##### Results:
 
-- Training Accuracy: 74.25%
-- Test Accuracy: 73.40%
+- Training Accuracy: 74.07%
+- Test Accuracy: 73.06%
 
-The ELU activation function showed similar results to Tanh, but did not achieve accuracy above 75%.
+The ELU activation function showed similar results to the original model, but did not achieve accuracy above 75%.
 
 #### Attempt 4: 
 
-In the fourth optimization attempt, the number of epochs was reduced to 20, the first hidden has 80 nodes, second layer has 30 nodes, and the third layer has 10 nodes. Relu was used for the activation. 
+In the fourth optimization attempt, the number of epochs was reduced to 20, the first hidden layer had 80 nodes, second layer had 30 nodes, and the third layer had 10 nodes. Relu was used for the activation. 
 
 ![Optimization_4 1](https://github.com/user-attachments/assets/3201511e-b2a0-4a3c-aebe-32afe1f0827e)
 
 ##### Results:
-- Training Accuracy: 73.83%
-- Test Accuracy: 73.99%
+- Training Accuracy: 74.13%
+- Test Accuracy: 72.46%
 
-This brought test accuracy slightly higher but still did not meet the 75% goal.
+This attempt did not show any improvement from the original model. 
 
 #### Binning Attempts
 
@@ -104,14 +106,14 @@ Next, the ASK_AMT column was binned into different categories to simplify the ra
 
 
 ##### Binning + ReLU Model Results:
-- Training Accuracy: 73.89%
-- Test Accuracy: 73.51%
+- Training Accuracy: 74.51%
+- Test Accuracy: 72.56%
 
 Binning with the ReLU model resulted in a slight improvement in test accuracy.
 
 ##### Binning + Tanh Model Results:
-- Training Accuracy: 74.47%
-- Test Accuracy: 72.61%
+- Training Accuracy: 74.95%
+- Test Accuracy: 72.38%
 
 Binning with the Tanh model showed a did not show a greater improvement to the relu attempt. 
 
@@ -123,14 +125,15 @@ Lastly, an outlier plot was created to identify and remove outliers from the dat
 
 
 ##### Results:
-- Training Accuracy: 76.13%
-- Test Accuracy: 71.16%
+- Training Accuracy: 75.71%
+- Test Accuracy: 70.29%
 
 Even though the training accuracy improved after removing outliers, the test accuracy dropped, suggesting that removing outliers did not improve the accuracy of the model.
 
 ## Conclusion
 
-Ultimately, the fourth optimization attempt, where the number of epochs was reduced to 20, the first hidden layer had 80 nodes, the second layer had 30 nodes, and the third layer had 10 nodes, achieved the highest test accuracy at 73.99%. While adjustments in hidden layers, activation functions, binning, and outlier removal yielded improvements, the model still did not achieve an accuracy above 75%. Further techniques or the use of different types of neural networks, could be explored to improve the model's performance.
+Ultimately,the first optimization attempt where the model was adjusted to use:
+100 nodes in the first hidden layer, 50 in the second, and 25 in the third achieved the highest test accuracy at 73.53%. While adjustments in hidden layers, activation functions, binning, and outlier removal yielded improvements, the model still did not achieve an accuracy above 75%. Further techniques or the use of different types of neural networks, could be explored to improve the model's performance.
 
 ## Acknowledgements
     
