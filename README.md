@@ -12,6 +12,7 @@ The purpose of this project is to create a binary classification model that pred
 - SPECIAL_CONSIDERATIONS: Special considerations for application
 - ASK_AMT: Funding amount requested
 - IS_SUCCESSFUL: Was the money used effectively
+
 The analysis includes preprocessing the data, building and optimizing a neural network, and testing different techniques improve the model's accuracy.
 
 ## Instructions
@@ -36,6 +37,7 @@ The initial model was developed using TensorFlow's Keras Sequential API. The arc
   ### Training Results:
   - Training Accuracy: 74.32%
   - Test Accuracy: 73.13%
+  
   The initial model produced a test accuracy of around 73%, which was below the target of 75%. So, further optimizations were attempted.
 
 ### 3. Optimization Attempts
@@ -61,6 +63,7 @@ For the second optimization attempt, the activation function was changed from Re
 ##### Results:
 - Training Accuracy: 74.04%
 - Test Accuracy: 73.43%
+
 Using Tanh provided a slight improvement in test accuracy but still fell short of the 75% goal.
 
 #### Attempt 3:
@@ -73,6 +76,7 @@ For the third optimization attempt,the ELU activation function was tested in all
 
 - Training Accuracy: 74.25%
 - Test Accuracy: 73.40%
+
 The ELU activation function showed similar results to Tanh, but did not achieve accuracy above 75%.
 
 #### Attempt 4: Reducing Complexity of Hidden Layers
@@ -84,7 +88,8 @@ In the fourth optimization attempt, the number of epochs was reduced to 20, the 
 
 - Training Accuracy: 73.83%
 - Test Accuracy: 73.99%
-This simplification brought test accuracy slightly higher but still did not meet the 75% goal.
+
+This brought test accuracy slightly higher but still did not meet the 75% goal.
 
 #### Binning Attempts
 Next, the ASK_AMT column was binned into different categories to simplify the range of funding requests. The following binning strategy was used: <1K, 1K-5K, 5K-10K, 10K-50K, 50K-100K, 100K-500K, 500K-1M, 1M-5M, >5M
@@ -93,12 +98,15 @@ Next, the ASK_AMT column was binned into different categories to simplify the ra
 ##### Binning + ReLU Model Results:
 - Training Accuracy: 73.89%
 - Test Accuracy: 73.51%
+
 Binning with the ReLU model resulted in a slight improvement in test accuracy.
 
 ##### Binning + Tanh Model Results:
 - Training Accuracy: 74.47%
 - Test Accuracy: 72.61%
+
 Binning with the Tanh model showed a did not show a greater improvement to the relu attempt. 
+
 #### Outlier Removal
 Lastly, an outlier plot was created to identify and remove outliers from the dataset based on the ASK_AMT column. 
 ![Outliers](<img width="1519" alt="Outlier1" src="https://github.com/user-attachments/assets/9815c51c-503c-4047-8dde-568c851c8f5d">
@@ -109,6 +117,7 @@ Lastly, an outlier plot was created to identify and remove outliers from the dat
 ##### Results:
 - Training Accuracy: 76.13%
 - Test Accuracy: 71.16%
+
 Even though the training accuracy improved after removing outliers, the test accuracy dropped, suggesting that removing outliers did not improve the accuracy of the model.
 
 ## Conclusion
@@ -119,8 +128,6 @@ Ultimately, the fourth optimization attempt, where the number of epochs was redu
     Xpert Learning Assistant was used to answer detailed questions, and assist in debugging.The starter code provided was the base of the report and was modified using course curriculum and activities to fit the requirements of the assignment. The TA and instructor for the course also assisted in adjusting the code during office hours.For more information about the Xpert Learning Assistant, visit [EdX Xpert Learning Assistant](https://www.edx.org/). 
 
 ## References
-
-
 - [Activation Functions in Neural Networks](https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html)
 - [Automated Hyperparameter Tuning with Keras Tuner and TensorFlow 2.0](https://medium.com/analytics-vidhya/automated-hyperparameter-tuning-with-keras-tuner-and-tensorflow-2-0-31ec83f08a62#:~:text=A%20Hyperband%20tuner%20is%20an%20optimized%20version%20of,achieving%20the%20highest%20accuracy%20on%20the%20validation%20set.)
 
