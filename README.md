@@ -18,8 +18,8 @@ The analysis includes preprocessing the data, building and optimizing a neural n
 ### Step 1. Data Preprocessing
 The following preprocessing steps were applied to the dataset:
 1. Read in the charity_data.csv and identify the target variable(s) and feature variables for the model
-  -The target variable is IS_SUCCESSFUL, which indicates whether the organization was successful (1) or not (0).
-  -Categorical features were converted into numerical values using one-hot encoding, including columns like APPLICATION_TYPE, AFFILIATION, and INCOME_AMT.
+  - The target variable is IS_SUCCESSFUL, which indicates whether the organization was successful (1) or not (0).
+  - Categorical features were converted into numerical values using one-hot encoding, including columns like APPLICATION_TYPE, AFFILIATION, and INCOME_AMT.
 2. Drop uncessary columns: EIN and NAME
 3. Identify the number of unique variables for each colum and for columns with more than 10 unique values (APPLICATION_TYPE and CLASSIFICATION) combine "rare" categorical varibales together into a new value, Other.
 4. Encode categorical varibles using pd.get_dummies()
@@ -29,13 +29,13 @@ The following preprocessing steps were applied to the dataset:
 
 ### 2. Compile, Train and Evaluate the Model 
 The initial model was developed using TensorFlow's Keras Sequential API. The architecture consisted of the following layers:
-  -Input Layer: Based on the number of input features from the preprocessed data.
-  -Hidden Layers: Two hidden layers with 80 and 30 nodes, respectively, using the relu activation function.
-  -Output Layer: A single neuron with a sigmoid activation function to predict the binary outcome (IS_SUCCESSFUL).
+  - Input Layer: Based on the number of input features from the preprocessed data.
+  - Hidden Layers: Two hidden layers with 80 and 30 nodes, respectively, using the relu activation function.
+  - Output Layer: A single neuron with a sigmoid activation function to predict the binary outcome (IS_SUCCESSFUL).
   
   ### Training Results:
-  -Training Accuracy: 74.32%
-  -Test Accuracy: 73.13%
+  - Training Accuracy: 74.32%
+  - Test Accuracy: 73.13%
   The initial model produced a test accuracy of around 73%, which was below the target of 75%. So, further optimizations were attempted.
 
 ### 3. Optimization Attempts
@@ -46,8 +46,8 @@ In the first optimization attempt, the model was adjusted to use:
 ![Optimizatin_1]()
 
 ##### Results:
--Training Accuracy: 74.70%
--Test Accuracy: 72.47%
+- Training Accuracy: 74.70%
+- Test Accuracy: 72.47%
 
 This shows did not show improvement in test accuracy compared to the initial model. 
 
@@ -59,8 +59,8 @@ For the second optimization attempt, the activation function was changed from Re
 )
 
 ##### Results:
--Training Accuracy: 74.04%
--Test Accuracy: 73.43%
+- Training Accuracy: 74.04%
+- Test Accuracy: 73.43%
 Using Tanh provided a slight improvement in test accuracy but still fell short of the 75% goal.
 
 #### Attempt 3:
@@ -71,8 +71,8 @@ For the third optimization attempt,the ELU activation function was tested in all
 
 ##### Results:
 
--Training Accuracy: 74.25%
--Test Accuracy: 73.40%
+- Training Accuracy: 74.25%
+- Test Accuracy: 73.40%
 The ELU activation function showed similar results to Tanh, but did not achieve accuracy above 75%.
 
 #### Attempt 4: Reducing Complexity of Hidden Layers
@@ -82,8 +82,8 @@ In the fourth optimization attempt, the number of epochs was reduced to 20, the 
 
 ##### Results:
 
--Training Accuracy: 73.83%
--Test Accuracy: 73.99%
+- Training Accuracy: 73.83%
+- Test Accuracy: 73.99%
 This simplification brought test accuracy slightly higher but still did not meet the 75% goal.
 
 #### Binning Attempts
@@ -91,13 +91,13 @@ Next, the ASK_AMT column was binned into different categories to simplify the ra
 ![Binning](Binning_Relu_1)
 
 ##### Binning + ReLU Model Results:
--Training Accuracy: 73.89%
--Test Accuracy: 73.51%
+- Training Accuracy: 73.89%
+- Test Accuracy: 73.51%
 Binning with the ReLU model resulted in a slight improvement in test accuracy.
 
 ##### Binning + Tanh Model Results:
--Training Accuracy: 74.47%
--Test Accuracy: 72.61%
+- Training Accuracy: 74.47%
+- Test Accuracy: 72.61%
 Binning with the Tanh model showed a did not show a greater improvement to the relu attempt. 
 #### Outlier Removal
 Lastly, an outlier plot was created to identify and remove outliers from the dataset based on the ASK_AMT column. 
@@ -107,8 +107,8 @@ Lastly, an outlier plot was created to identify and remove outliers from the dat
 )
 
 ##### Results:
--Training Accuracy: 76.13%
--Test Accuracy: 71.16%
+- Training Accuracy: 76.13%
+- Test Accuracy: 71.16%
 Even though the training accuracy improved after removing outliers, the test accuracy dropped, suggesting that removing outliers did not improve the accuracy of the model.
 
 ## Conclusion
@@ -119,7 +119,7 @@ Ultimately, the fourth optimization attempt, where the number of epochs was redu
     Xpert Learning Assistant was used to answer detailed questions, and assist in debugging.The starter code provided was the base of the report and was modified using course curriculum and activities to fit the requirements of the assignment. The TA and instructor for the course also assisted in adjusting the code during office hours.For more information about the Xpert Learning Assistant, visit [EdX Xpert Learning Assistant](https://www.edx.org/). 
 
 ## References
-## References
+
 
 - [Activation Functions in Neural Networks](https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html)
 - [Automated Hyperparameter Tuning with Keras Tuner and TensorFlow 2.0](https://medium.com/analytics-vidhya/automated-hyperparameter-tuning-with-keras-tuner-and-tensorflow-2-0-31ec83f08a62#:~:text=A%20Hyperband%20tuner%20is%20an%20optimized%20version%20of,achieving%20the%20highest%20accuracy%20on%20the%20validation%20set.)
