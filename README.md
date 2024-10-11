@@ -45,9 +45,8 @@ The initial model was developed using TensorFlow's Keras Sequential API. The arc
 #### Attempt 1: 
 In the first optimization attempt, the model was adjusted to use:
 100 nodes in the first hidden layer, 50 in the second, and 25 in the third.
-![Optimizatin_1]()
-<img width="1519" alt="Optimization_1 1" src="https://github.com/user-attachments/assets/25ddac6a-e24d-4f49-918d-d8c6d70d41ae">
 
+<img width="1519" alt="Optimization_1 1" src="https://github.com/user-attachments/assets/25ddac6a-e24d-4f49-918d-d8c6d70d41ae">
 
 ##### Results:
 - Training Accuracy: 74.70%
@@ -56,11 +55,9 @@ In the first optimization attempt, the model was adjusted to use:
 This shows did not show improvement in test accuracy compared to the initial model. 
 
 #### Attempt 2: 
-For the second optimization attempt, the activation function was changed from Relu to Tanh for the hidden layers and the model was adjusted to use:
-80 nodes in the first hidden layer, 40 in the second, and 20 in the third.
+For the second optimization attempt, the activation function was changed from Relu to Tanh for the hidden layers and the model was adjusted to use: 80 nodes in the first hidden layer, 40 in the second, and 20 in the third.
 
-![Optimization_2](<img width="1494" alt="Optimization_2 1" src="https://github.com/user-attachments/assets/82bb4b42-76e4-43df-83a8-c7d362e9e78e">
-)
+<img width="1494" alt="Optimization_2 1" src="https://github.com/user-attachments/assets/8bd595c3-e233-4533-9510-3a37390b3908">
 
 ##### Results:
 - Training Accuracy: 74.04%
@@ -71,8 +68,8 @@ Using Tanh provided a slight improvement in test accuracy but still fell short o
 #### Attempt 3:
 For the third optimization attempt,the ELU activation function was tested in all hidden layers.
 
-![Optimization_3](<img width="1493" alt="Optimization_3 1" src="https://github.com/user-attachments/assets/0b71ece0-9986-4942-93ad-ca20fbca5b2c">
-)
+<img width="1493" alt="Optimization_3 1" src="https://github.com/user-attachments/assets/859a7a3e-da8e-4ead-9b78-f6d555070fa8">
+
 
 ##### Results:
 
@@ -81,13 +78,12 @@ For the third optimization attempt,the ELU activation function was tested in all
 
 The ELU activation function showed similar results to Tanh, but did not achieve accuracy above 75%.
 
-#### Attempt 4: Reducing Complexity of Hidden Layers
+#### Attempt 4: 
 In the fourth optimization attempt, the number of epochs was reduced to 20, the first hidden has 80 nodes, second layer has 30 nodes, and the third layer has 10 nodes. Relu was used for the activation. 
-![Optimization_4](![Optimization_4 1](https://github.com/user-attachments/assets/d0c168b9-6c90-41f4-92eb-c6a83e7bed89)
-)
+
+![Optimization_4 1](https://github.com/user-attachments/assets/3201511e-b2a0-4a3c-aebe-32afe1f0827e)
 
 ##### Results:
-
 - Training Accuracy: 73.83%
 - Test Accuracy: 73.99%
 
@@ -95,7 +91,9 @@ This brought test accuracy slightly higher but still did not meet the 75% goal.
 
 #### Binning Attempts
 Next, the ASK_AMT column was binned into different categories to simplify the range of funding requests. The following binning strategy was used: <1K, 1K-5K, 5K-10K, 10K-50K, 50K-100K, 100K-500K, 500K-1M, 1M-5M, >5M
-![Binning](Binning_Relu_1)
+
+<img width="1481" alt="Binning_Relu_1" src="https://github.com/user-attachments/assets/8ad20f9a-152e-4ef4-bec2-1bf0a6311334">
+
 
 ##### Binning + ReLU Model Results:
 - Training Accuracy: 73.89%
@@ -111,10 +109,10 @@ Binning with the Tanh model showed a did not show a greater improvement to the r
 
 #### Outlier Removal
 Lastly, an outlier plot was created to identify and remove outliers from the dataset based on the ASK_AMT column. 
-![Outliers](<img width="1519" alt="Outlier1" src="https://github.com/user-attachments/assets/9815c51c-503c-4047-8dde-568c851c8f5d">
-)
-![Outliers_2](<img width="1532" alt="Outlier2" src="https://github.com/user-attachments/assets/b30f89a2-f0b3-4157-b7ec-bc56d6d90b9b">
-)
+
+<img width="1519" alt="Outlier1" src="https://github.com/user-attachments/assets/487f8fd9-dd35-4fc8-8fd1-12b16a64995b">
+<img width="1532" alt="Outlier2" src="https://github.com/user-attachments/assets/b6888dd5-bd88-4cac-836a-7a6bcdf46a09">
+
 
 ##### Results:
 - Training Accuracy: 76.13%
